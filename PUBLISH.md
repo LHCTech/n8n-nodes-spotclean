@@ -14,13 +14,17 @@ n8n Cloud only installs **verified** community nodes. Follow this once the packa
 
 ## 2. Release
 
+Use **Node 22** locally and in CI (pinned in workflows; `lts/*` / Node 24+ breaks `n8n-node lint`).
+
 ```bash
 npm run lint
 npm run build
 npm run release   # bumps version, tags, pushes → triggers publish.yml
 ```
 
-Tags must match `*.*.*` (e.g. `0.1.0`) per [`.github/workflows/publish.yml`](.github/workflows/publish.yml).
+Tags must match `*.*.*` (e.g. `0.1.0`) per [`.github/workflows/publish.yml`](.github/workflows/publish.yml). After a successful publish, bump again before re-running — npm rejects republishing the same version.
+
+Auth: Trusted Publisher (OIDC) **or** repo secret `NPM_TOKEN` (mapped to `NODE_AUTH_TOKEN` in `publish.yml`).
 
 ## 3. Creator Portal
 

@@ -21,7 +21,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 'lts/*'
+          # Pin 22: lts/* (24+) breaks n8n community-node eslint (ts-api-utils Intrinsic).
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
