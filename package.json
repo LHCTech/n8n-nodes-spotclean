@@ -1,6 +1,9 @@
 {
-	"name": "n8n-nodes-spotclean",
-	"version": "0.1.0",
+	"name": "@lhctech/n8n-nodes-spotclean",
+	"version": "0.1.2",
+	"publishConfig": {
+		"access": "public"
+	},
 	"description": "n8n community node for SpotClean — clients, houses, visits, invoices, and webhook events",
 	"license": "MIT",
 	"homepage": "https://spotclean.app",
@@ -46,7 +49,7 @@
 		"eslint": "9.29.0",
 		"prettier": "3.9.10",
 		"release-it": "20.2.0",
-		"typescript": "5.9.3"
+		"typescript": "7.0.2"
 	},
 	"peerDependencies": {
 		"n8n-workflow": "*"
