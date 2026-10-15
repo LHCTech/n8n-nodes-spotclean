@@ -16,6 +16,8 @@ n8n Cloud only installs **verified** community nodes. Follow this once the packa
 
 Use **Node 22** locally and in CI (pinned in workflows; `lts/*` / Node 24+ breaks `n8n-node lint`).
 
+Keep **TypeScript 5.9.x** (not 7.x): `@n8n/node-cli` eslint uses `ts-api-utils`, which crashes on TypeScript 7 (`Intrinsic`).
+
 ```bash
 npm run lint
 npm run build
