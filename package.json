@@ -1,6 +1,6 @@
 {
 	"name": "@lhctech/n8n-nodes-spotclean",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"publishConfig": {
 		"access": "public"
 	},
