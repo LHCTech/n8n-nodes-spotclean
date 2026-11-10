@@ -16,7 +16,7 @@ Works on **n8n Cloud** after the package is published as a [verified community n
 
 ### Self-hosted
 
-Follow the [community nodes installation guide](https://docs.n8n.io/integrations/community-nodes/installation/), package name: `n8n-nodes-spotclean`.
+Follow the [community nodes installation guide](https://docs.n8n.io/integrations/community-nodes/installation/), package name: `@lhctech/n8n-nodes-spotclean`.
 
 ## Credentials
 

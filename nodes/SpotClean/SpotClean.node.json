@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-spotclean.spotClean",
+	"node": "@lhctech/n8n-nodes-spotclean.spotClean",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Productivity", "Sales"],

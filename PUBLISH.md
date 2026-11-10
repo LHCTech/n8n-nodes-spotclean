@@ -6,7 +6,7 @@ n8n Cloud only installs **verified** community nodes. Follow this once the packa
 
 1. Create the GitHub repo `LHCTech/n8n-nodes-spotclean` (or update `package.json` `repository.url`).
 2. Push this folder to `main`.
-3. On npmjs.com, create/claim the package name `n8n-nodes-spotclean`.
+3. On npmjs.com, create/claim the package name `@lhctech/n8n-nodes-spotclean`.
 4. Under package **Publish access → Trusted Publishers**, add GitHub Actions:
    - Repository owner / name matching GitHub
    - Workflow name: `publish.yml`
@@ -31,7 +31,7 @@ Auth: Trusted Publisher (OIDC) **or** repo secret `NPM_TOKEN` (mapped to `NODE_A
 ## 3. Creator Portal
 
 1. Sign in to the [n8n Creator Portal](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/).
-2. Submit `n8n-nodes-spotclean` for verification.
+2. Submit `@lhctech/n8n-nodes-spotclean` for verification.
 3. After approval, Cloud workspace owners can install SpotClean from the Nodes panel.
 
 ## Checklist before submit

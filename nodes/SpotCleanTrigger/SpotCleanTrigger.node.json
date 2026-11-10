@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-spotclean.spotCleanTrigger",
+	"node": "@lhctech/n8n-nodes-spotclean.spotCleanTrigger",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Productivity", "Sales"],
