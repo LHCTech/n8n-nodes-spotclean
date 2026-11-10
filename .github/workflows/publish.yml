@@ -87,15 +87,22 @@ jobs:
           # secret breaks Trusted Publisher OIDC (ENEEDAUTH / E404).
           cache: 'npm'
 
+      - name: Upgrade npm for Trusted Publishing (OIDC)
+        # Node 22 ships npm 10; Trusted Publisher needs npm ≥ 11.5.1.
+        run: npm install -g npm@11
+
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Release
-        # Publishes via npm Trusted Publisher (OIDC) + provenance.
-        # Lint/build run inside `n8n-node release`.
-        # Keep NPM_TOKEN unset in repo secrets — OIDC is the auth path.
-        # If you must fall back to a token, set NPM_TOKEN and also set
-        # registry-url on setup-node (see Option B in the header comments).
+      - name: Lint and build
         run: |
+          npm run lint
+          npm run build
+
+      - name: Publish to npm
+        # Tag push already bumped the version; publish with OIDC + provenance.
+        # Keep NPM_TOKEN unset — Trusted Publisher is the auth path.
+        run: |
+          npm --version
           npm config set registry https://registry.npmjs.org
-          npm run release
+          npm publish --access public --provenance
