@@ -82,20 +82,20 @@ jobs:
         with:
           # Pin 22: lts/* (24+) breaks n8n community-node eslint (ts-api-utils Intrinsic).
           node-version: '22'
-          registry-url: 'https://registry.npmjs.org'
+          # Do NOT set registry-url here: setup-node would write
+          # `//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}` and an empty
+          # secret breaks Trusted Publisher OIDC (ENEEDAUTH / E404).
           cache: 'npm'
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
       - name: Release
-        # Publishes to npm with a provenance attestation (requires id-token: write above).
-        # Lint and build run automatically as part of the release process.
-        #
-        # Option A (OIDC Trusted Publisher): leave NPM_TOKEN unset.
-        # Option B (token): set repo secret NPM_TOKEN — setup-node writes .npmrc
-        #   that uses NODE_AUTH_TOKEN for //registry.npmjs.org/.
-        run: npm run release
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        # Publishes via npm Trusted Publisher (OIDC) + provenance.
+        # Lint/build run inside `n8n-node release`.
+        # Keep NPM_TOKEN unset in repo secrets — OIDC is the auth path.
+        # If you must fall back to a token, set NPM_TOKEN and also set
+        # registry-url on setup-node (see Option B in the header comments).
+        run: |
+          npm config set registry https://registry.npmjs.org
+          npm run release
