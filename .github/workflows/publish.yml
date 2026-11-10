@@ -94,15 +94,11 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Lint and build
-        run: |
-          npm run lint
-          npm run build
-
-      - name: Publish to npm
-        # Tag push already bumped the version; publish with OIDC + provenance.
-        # Keep NPM_TOKEN unset — Trusted Publisher is the auth path.
+      - name: Release
+        # `n8n-node release` (lint/build + publish). Direct `npm publish` fails
+        # because prepublishOnly runs `n8n-node prerelease` as a guard.
+        # Keep NPM_TOKEN unset — Trusted Publisher OIDC is the auth path.
         run: |
           npm --version
           npm config set registry https://registry.npmjs.org
-          npm publish --access public --provenance
+          npm run release
